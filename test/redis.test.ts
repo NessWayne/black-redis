@@ -3,14 +3,6 @@
 import { RedisService } from "../src";
 
 describe('REDIS SERVICE', () => {
-  //{host : "127.0.0.1", port: 6379}
-
-  /**
-   *                          {host : "redis-13765.c289.us-west-1-2.ec2.cloud.redislabs.com", 
-                               port: 13765, 
-                               password: "Y4oghVwfwwTd1g1VKsZzsBbfEOVJmU7c", 
-                               db: 0}
-   */
 
   const host = process.env.RHOST;
   const port = Number(process.env.RPORT);
