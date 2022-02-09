@@ -27,9 +27,6 @@ jobs:
           RPASS: Y4oghVwfwwTd1g1VKsZzsBbfEOVJmU7c
           RDB: 0
 
-      - name: Lint
-        run: yarn lint
-
       - name: Test
         run: yarn test --ci --coverage --maxWorkers=2
 
