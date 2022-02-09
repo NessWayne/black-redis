@@ -22,10 +22,10 @@ jobs:
       - name: Install deps and build (with cache)
         uses: bahmutov/npm-install@v1
         env:
-          RHOST: ${{ redis-13765.c289.us-west-1-2.ec2.cloud.redislabs.com }} 
-          RPORT: ${{ 13765 }} 
-          RPASS: ${{ Y4oghVwfwwTd1g1VKsZzsBbfEOVJmU7c }} 
-          RDB: ${{ 0 }} 
+          RHOST: "redis-13765.c289.us-west-1-2.ec2.cloud.redislabs.com"
+          RPORT: 13765
+          RPASS: "Y4oghVwfwwTd1g1VKsZzsBbfEOVJmU7c"
+          RDB: 0
 
       - name: Test
         run: yarn test --ci --coverage --maxWorkers=2
