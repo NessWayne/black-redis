@@ -124,7 +124,10 @@ export class RedisService {
     });
   }
 
-  async deleteKeysLike(pattern: string, db = 0): Promise<ResultType> {
+  async deleteKeysLike(
+    pattern: string,
+    db: number | string = 0
+  ): Promise<ResultType> {
     const { Result: rs, Data: keys } = await this.getKeysLike(pattern, db);
 
     if (rs) {
@@ -137,7 +140,7 @@ export class RedisService {
     }
   }
 
-  async deleteKey(key: string, db = 0): Promise<ResultType> {
+  async deleteKey(key: string, db: number | string = 0): Promise<ResultType> {
     const isSelected = this.selectDB(db); //Default DataBase 0
 
     if (await isSelected) {
@@ -159,7 +162,7 @@ export class RedisService {
     });
   }
 
-  async set(key: string, value: string, db = 0) {
+  async set(key: string, value: string, db: number | string = 0) {
     const isSelected = this.selectDB(db); //Default DataBase 0
 
     if (await isSelected) {
@@ -169,7 +172,12 @@ export class RedisService {
     return null;
   }
 
-  async setex(key: string, value: string, expiration: number, db = 0) {
+  async setex(
+    key: string,
+    value: string,
+    expiration: number,
+    db: number | string = 0
+  ) {
     const isSelected = this.selectDB(db); //Default DataBase 0
 
     if (await isSelected) {
@@ -182,7 +190,7 @@ export class RedisService {
   async setSADD(
     key: string,
     values: string | string[],
-    db = 0
+    db: number | string = 0
   ): Promise<boolean> {
     const isSelected = this.selectDB(db); //Default DataBase 0
 
@@ -199,7 +207,7 @@ export class RedisService {
     return false;
   }
 
-  async getSADD(key: string, db = 0): Promise<ResultType> {
+  async getSADD(key: string, db: number | string = 0): Promise<ResultType> {
     const isSelected = this.selectDB(db); //Default DataBase 0
 
     if (await isSelected) {
@@ -221,7 +229,11 @@ export class RedisService {
     });
   }
 
-  async existInList(key: string, value: string, db = 0): Promise<boolean> {
+  async existInList(
+    key: string,
+    value: string,
+    db: number | string = 0
+  ): Promise<boolean> {
     const isSelected = this.selectDB(db); //Default DataBase 0
 
     if (await isSelected) {
