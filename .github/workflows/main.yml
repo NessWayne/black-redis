@@ -17,11 +17,11 @@ jobs:
         # Imagen del contenedor Docker Hub
         image: redis
         # Establece revisiones de estado para esperar hasta que Redis haya comenzado
-        options: 
+        options:
           --health-cmd "redis-cli ping"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
           
     steps:
       - name: Checkout repo
