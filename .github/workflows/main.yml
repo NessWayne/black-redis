@@ -10,7 +10,19 @@ jobs:
       matrix:
         node: ['10.x', '12.x', '14.x']
         os: [ubuntu-latest, windows-latest, macOS-latest]
-
+    
+    # Contenedores de servicio para ejecutar con `container-job`
+    services:
+      # Etiqueta usada para acceder al contenedor de servicio redis:
+        # Imagen del contenedor Docker Hub
+        image: redis
+        # Establece revisiones de estado para esperar hasta que Redis haya comenzado
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+          
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
@@ -26,10 +38,14 @@ jobs:
       - name: Test
         run: yarn test --ci --coverage --maxWorkers=2
         env:
-          RHOST: ${{ secrets.RHOST }} 
-          RPORT: ${{ secrets.RPORT }} 
-          RPASS: ${{ secrets.RPASS }}
-          RDB: ${{ secrets.RDB }}
+          REDIS_HOST: redis
+          REDIS_PORT: 6379
+          
+       # env:
+       #   RHOST: ${{ secrets.RHOST }} 
+       #   RPORT: ${{ secrets.RPORT }} 
+       #   RPASS: ${{ secrets.RPASS }}
+       #   RDB: ${{ secrets.RDB }}
 
       - name: Build
         run: yarn build
