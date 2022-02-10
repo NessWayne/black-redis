@@ -1,20 +1,29 @@
 name: CI
 on: [push]
 jobs:
-  build:
-    name: Build, lint, and test on Node ${{ matrix.node }} and ${{ matrix.os }}
-    
-    # Contenedores de servicio para ejecutar con `container-job`
+  
+  container-job:              # Label of the container job
+    # Containers must run in Linux based operating systems
+    runs-on: ubuntu-latest
+    # Docker Hub image that `container-job` executes in
+    container: node:10.18-jessie
+
+    # Service containers to run with `container-job`
     services:
       # Label used to access the service container
       redis:
         # Docker Hub image
         image: redis
         # Set health checks to wait until redis has started
-        ports:
-        - 6379:6379
-        options: --entrypoint redis-server
-
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+          
+  build:
+    name: Build, lint, and test on Node ${{ matrix.node }} and ${{ matrix.os }}
+    
     runs-on: ${{ matrix.os }}
     environment: dev
     strategy:
