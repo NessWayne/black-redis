@@ -14,7 +14,7 @@ describe('REDIS SERVICE', () => {
   });
 
   it('Select DB', async () => {
-    expect(await rd.selectDB(2)).toEqual(true);
+    expect(await rd.selectDB(0)).toEqual(true);
   });
 
   it('Set Value', async () => {
