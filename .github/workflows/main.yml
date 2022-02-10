@@ -31,5 +31,8 @@ jobs:
           RPASS: ${{ secrets.RPASS }}
           RDB: ${{ secrets.RDB }}
 
+      - name: Lint
+        run: yarn lint
+        
       - name: Build
         run: yarn build
