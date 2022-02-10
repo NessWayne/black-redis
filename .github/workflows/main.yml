@@ -25,10 +25,10 @@ jobs:
       - name: Test
         run: yarn test --ci --coverage --maxWorkers=2
         env:
-          RHOST: secrets.RHOST
-          RPORT: secrets.RPORT
-          RPASS: secrets.RPASS
-          RDB: secrets.RDB
+          RHOST: '${{ secrets.RHOST }}' 
+          RPORT: '${{ secrets.RPORT }}' 
+          RPASS: '${{ secrets.RPASS }}' 
+          RDB: '${{ secrets.RDB }}' 
 
       - name: Build
         run: yarn build
