@@ -24,7 +24,7 @@ jobs:
         
       - name: CHECK VARS
         ## Reference your environment variables
-        run: echo "The API key is:${{ RPORT }}"   
+        run: echo "The API key is:${{ github.RPORT }}"   
  
       - name: Test
         run: yarn test --ci --coverage --maxWorkers=2
