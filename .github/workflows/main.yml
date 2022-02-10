@@ -17,12 +17,7 @@ jobs:
         # Imagen del contenedor Docker Hub
         image: redis
         # Establece revisiones de estado para esperar hasta que Redis haya comenzado
-        options: >-
-          --health-cmd "redis-cli ping"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-          
+         
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
@@ -38,8 +33,8 @@ jobs:
       - name: Test
         run: yarn test --ci --coverage --maxWorkers=2
         env:
-          REDIS_HOST: redis
-          REDIS_PORT: 6379
+          RHOST: redis
+          RPORT: 6379
           
        # env:
        #   RHOST: ${{ secrets.RHOST }} 
