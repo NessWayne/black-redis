@@ -1,6 +1,6 @@
 # BlackRedis
 
-[![Node.js CI](https://github.com/NessWayne/black-redis/blob/master/.github/workflows/main.yml/badge.svg)](https://github.com/NessWayne/black-redis/blob/master/.github/workflows/main.yml) [![NPM version](https://img.shields.io/npm/v/black-redis.svg)](https://www.npmjs.com/package/black-redis)
+[![Node.js CI](https://github.com/NessWayne/black-redis/actions/workflows/main.yml/badge.svg)](https://github.com/NessWayne/black-redis/actions/workflows/main.yml) [![NPM version](https://img.shields.io/npm/v/black-redis.svg)](https://www.npmjs.com/package/black-redis)
 
 Overview
 --------
