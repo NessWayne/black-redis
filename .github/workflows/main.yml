@@ -24,16 +24,12 @@ jobs:
         uses: bahmutov/npm-install@v1
         
       - name: Test
-        run: yarn test --ci --coverage --maxWorkers=2
+        run: yarn test --ci --coverage --maxWorkers=2 
         env:
-          RHOST: redis
-          RPORT: ${{ job.services.redis.ports[6379] }}
-          
-       # env:
-       #   RHOST: ${{ secrets.RHOST }} 
-       #   RPORT: ${{ secrets.RPORT }} 
-       #   RPASS: ${{ secrets.RPASS }}
-       #   RDB: ${{ secrets.RDB }}
+          RHOST: ${{ secrets.RHOST }} 
+          RPORT: ${{ secrets.RPORT }} 
+          RPASS: ${{ secrets.RPASS }}
+          RDB: ${{ secrets.RDB }}
 
       - name: Build
         run: yarn build
