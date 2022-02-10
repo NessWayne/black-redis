@@ -27,6 +27,7 @@ jobs:
         run: echo "The API key is:${{secrets.RHOST}}"   
  
       - name: Test
+        id: redis-config
         run: yarn test --ci --coverage --maxWorkers=2
         env:
           RHOST: ${{ secrets.RHOST }} 
