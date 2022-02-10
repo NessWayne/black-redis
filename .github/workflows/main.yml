@@ -13,10 +13,16 @@ jobs:
     
     # Contenedores de servicio para ejecutar con `container-job`
     services:
-      # Etiqueta usada para acceder al contenedor de servicio redis:
-        # Imagen del contenedor Docker Hub
+      # Label used to access the service container
+      redis:
+        # Docker Hub image
         image: redis
-        # Establece revisiones de estado para esperar hasta que Redis haya comenzado
+        # Set health checks to wait until redis has started
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
          
     steps:
       - name: Checkout repo
