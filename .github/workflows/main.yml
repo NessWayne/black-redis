@@ -21,6 +21,10 @@ jobs:
 
       - name: Install deps and build (with cache)
         uses: bahmutov/npm-install@v1
+        
+      - name: CHECK VARS
+        ## Reference your environment variables
+        run: echo "The API key is:${{secrets.RHOST}}"   
  
       - name: Test
         run: yarn test --ci --coverage --maxWorkers=2
